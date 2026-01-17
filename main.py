@@ -8,6 +8,7 @@
 --> Tell jokes
 -->Open Apps
 -->Exit by voice command
+
 '''
 #<----------------importing modules------------------->
 
@@ -20,7 +21,7 @@ import os               # Used to run system commands
 import pywhatkit        # Used for playing YouTube videos, sending WhatsApp messages etc.
 import pyjokes          # Gives random jokes.
 import musicFile # my local file
-
+from email_sender import send_email 
 
 #<---------------Initialize Voice Engine--------------->
     
@@ -50,7 +51,83 @@ def open_app(path, app_name):
     os.startfile(path)
 
 
+def take_command():
+    r = sr.Recognizer() # Creates a Recognizer object which handles speech recognition.
+    with sr.Microphone() as source:
+        print("Listening...")
+        r.adjust_for_ambient_noise(source, duration=2)  # important
+
+        try:
+            audio = r.listen(source, timeout=8, phrase_time_limit=6)
+            command = r.recognize_google(audio)
+            return command.lower()
+        except:
+            return ""
+
+
+# This will keep taking input until user says "done" / "complete"
+def take_full_input(input):
+    speak(input)
+    full_text = ""
+
+    while True:
+        text = take_command()
+        print("Heard:", text)
+
+        if text == "":
+            speak("I didn't catch that. Please repeat.")
+            continue
+
+        # stop words
+        if "done" in text or "complete" in text or "stop" in text or "dan" in text:
+            break
+
+        full_text += (" " + text)
+        speak("Say done when finished")
+
+    return full_text
+
+
+def email_with_voice():
+
+    # Receiver 
+    # rec = take_full_input("Tell me receiver email. excluding @gmail.com Speak slowly. ")
+    # receiver = "".join(rec.split())
+    # receiver += "@gmail.com"
+
+    speak("Please type the receiver email so that send correctly")
+    receiver = input("Receiver email:")
+    speak(f"Receiver email is :{receiver}")
+
+    # subject
+    subject = take_full_input("Tell me subject. Say done when finished")
+
+    # message
+    body = take_full_input("Tell me message. Say done when finished")
+
+    if receiver and subject and body:
+        speak("Sending email")
+        ok = send_email(receiver, subject, body)
+
+        if ok:
+            speak("Email sent successfully")
+        else:
+            speak("Sorry, email sending failed")
+    else:
+        speak("Incomplete information, email not sent")
+
+
+
+
+
+
+
+
 def commandProcess(query):
+
+    #  Email sending
+    if "send email" in query or "send mail" in query:
+        email_with_voice()
         
     if "how r u" in query or "how are you" in query:
         speak("Hii i am fine , How can help you")
@@ -68,7 +145,7 @@ def commandProcess(query):
         print(result)
         speak(result)
 
-    # Open Websites
+    # Open Websites/socal media
     elif "open youtube" in query or "open the youtube" in query:
         speak("Opening Youtube")
         webbrowser.open("https://youtube.com")
@@ -111,8 +188,7 @@ def commandProcess(query):
         speak("Closing Gmail")
         os.system("taskkill /f /im msedge.exe") 
         # os.system("taskkill /f /im chrome.exe")
-      
-    
+        
     # Opening Apps
     elif "open desktop" in query:
         open_app(r"C:\\Users\\Nikhil\\Desktop","Desktop")
@@ -124,13 +200,13 @@ def commandProcess(query):
     elif "time" in query:
         time = datetime.datetime.now().strftime("%H:%M:%S")
         speak(f"Current time is {time}")
-        print(time)
+        print(f"Current Time:{time}")
 
     # Date
     elif "date" in query:
         date = datetime.datetime.now().strftime("%d %B %Y")
         speak(f"Today's date is {date}")
-        print(date)
+        print(f"Today date:{date}")
             
     #  Play song
     elif query.startswith("play"):
@@ -146,6 +222,10 @@ def commandProcess(query):
         joke = pyjokes.get_joke()
         speak(joke)
         print(joke)
+    
+    # Exit / Bye
+    elif "exit" in query or "bye" in query:
+        speak("Goodbye Sir. Have a nice day!")
 
     else:
         speak("Sorry, I don't have that feature yet.")    
@@ -155,31 +235,16 @@ def commandProcess(query):
 if __name__ == "__main__":
     wishMe()
     #<------------------Voice input----------------------->
-    while True:
-        r = sr.Recognizer()  # Creates a Recognizer object which handles speech recognition.
-        print("Recognizing...")
-
+    while True:  
         try:
-            # Uses microphone as audio input source.
-         with sr.Microphone() as voice_source:
+            print("Recognizing...")
+            word = take_command()
 
-            print("\nListening......🧏‍♀️")
-            record_audio = r.listen(voice_source,timeout=5,phrase_time_limit=1)
-            word = r.recognize_google(record_audio)
-
-            if word.lower() == "jarvis":
+            if word.lower() == "hello":
                 speak("Yaa")
-                with sr.Microphone() as source:
-                    print("jarvis now active")
-                    # Google speech recognition converts audio into English
-                    audio = r.listen(source)
-                    query = r.recognize_google(audio, language="en-in")
-                    print(f"You said: {query}\n")
-
-                    commandProcess(query.lower())
-
-                    if "exit" in query or "bye" in query:
-                     speak("Goodbye Sir. Have a nice day!")
+                query = take_command()
+                print(f"You said: {query}\n")
+                commandProcess(query)
         
         except Exception as e :
             print(f"error:{e}")
