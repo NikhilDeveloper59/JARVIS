@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/jarvis-logo.png" width="170" alt="Jarvis Logo">
+  <img src="assets/unnamed.png" width="170" alt="Jarvis Logo">
 </p>
 
 <p align="center">
