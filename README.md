@@ -9,24 +9,18 @@
   Speak commands & let JARVIS automate your daily tasks like AI chat, Weather, News, Email, Wikipedia, Apps & more!
 </p>
 
+<h3 align="center">🧩 Core Modules Used</h3>
 <p align="center">
-  <a href="https://github.com/NikhilDeveloper59/JARVIS/stargazers">
-    <img src="https://img.shields.io/github/stars/NikhilDeveloper59/JARVIS?style=for-the-badge" />
-  </a>
-  <a href="https://github.com/NikhilDeveloper59/JARVIS/forks">
-    <img src="https://img.shields.io/github/forks/NikhilDeveloper59/JARVIS?style=for-the-badge" />
-  </a>
-  <a href="https://github.com/NikhilDeveloper59/JARVIS/issues">
-    <img src="https://img.shields.io/github/issues/NikhilDeveloper59/JARVIS?style=for-the-badge" />
-  </a>
-  <a href="https://github.com/NikhilDeveloper59/JARVIS/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/NikhilDeveloper59/JARVIS?style=for-the-badge" />
-  </a>
-
-  <!-- ✅ CORE MODULES badge -->
-  <img src="https://img.shields.io/badge/Core%20Modules-6-blueviolet?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/pyttsx3-TTS-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/SpeechRecognition-Voice%20Input-green?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/PyAudio-Microphone-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Wikipedia-Search-lightgrey?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/pywhatkit-YouTube%20Play-red?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/pyjokes-Jokes-yellow?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/webbrowser-Web%20Automation-purple?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/os-System%20Control-black?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/datetime-Time%20%26%20Date-teal?style=for-the-badge" />
 </p>
-
 
 ---
 
