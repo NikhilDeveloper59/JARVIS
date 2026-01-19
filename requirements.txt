@@ -1,0 +1,15 @@
+pip install opencv-python face-recognition numpy
+
+when support above
+pip install --upgrade pip setuptools wheel
+pip install opencv-python numpy
+pip install face-recognition
+
+install Library (for hidden password input)
+pip install maskpass
+
+pip install openai # chat with openAi
+pip install requests # for whether and news
+pip install openai python-dotenv # for sure key access
+
+
