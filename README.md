@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/NikhilDeveloper59/JARVIS/main/unnamed.png" alt="Jarvis Banner" width="30%">
+  <img src="https://raw.githubusercontent.com/NikhilDeveloper59/JARVIS/main/unnamed.png" alt="Jarvis Banner" width="20%">
 </p>
 
 <h1 align="center">🤖 JARVIS - AI Voice Assistant</h1>
