@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/NikhilDeveloper59/JARVIS/main/unnamed.png" alt="Jarvis Banner" width="100%">
+  <img src="https://raw.githubusercontent.com/NikhilDeveloper59/JARVIS/main/unnamed.png" alt="Jarvis Banner" width="30%">
 </p>
 
 <h1 align="center">🤖 JARVIS - AI Voice Assistant</h1>
@@ -22,7 +22,11 @@
   <a href="https://github.com/NikhilDeveloper59/JARVIS/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/NikhilDeveloper59/JARVIS?style=for-the-badge" />
   </a>
+
+  <!-- ✅ CORE MODULES badge -->
+  <img src="https://img.shields.io/badge/Core%20Modules-6-blueviolet?style=for-the-badge" />
 </p>
+
 
 ---
 
